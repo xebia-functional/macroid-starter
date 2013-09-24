@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.macroid.starter"
+    android:versionCode="0"
+    android:versionName="0.1">
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16"/>
+
+    <application
+        android:label="Macroid Starter"
+        android:icon="@drawable/android:star_big_on"
+        android:theme="@android:style/Theme.Holo.Light">
+
+        <activity
+          android:label="Macroid Starter"
+          android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

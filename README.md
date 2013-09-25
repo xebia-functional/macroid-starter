@@ -10,7 +10,7 @@ A sample project to start playing with [Macroid](https://github.com/stanch/macro
 
 If you want to use *INTELLIJ IDEA* to work with the project:
 
-* Install IDEA (*Android Studio* works for me, too!)
+* Install IDEA ( *Android Studio* works for me, too!)
 * Install Scala plugin from http://plugins.jetbrains.com/plugin/1347
   (Android Studio users: download the file from the site, go to plugins and install manually. I use version 0.12.12)
 * Install sbt plugin from http://plugins.jetbrains.com/plugin/5007 (Android Studio works at least with version 1.5.0)

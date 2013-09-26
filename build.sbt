@@ -9,8 +9,7 @@ name := "macroid-starter"
 scalaVersion := "2.10.2"
 
 resolvers ++= Seq(
-  "jrebel" at "http://jcenter.bintray.com",
-  Resolver.sonatypeRepo("snapshots")
+  "jrebel" at "http://jcenter.bintray.com"
 )
 
 libraryDependencies ++= Seq(

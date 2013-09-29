@@ -19,6 +19,6 @@ libraryDependencies ++= Seq(
 
 proguardScala in Android := true
 
-proguardCache in Android += ProguardCache("org.macroid") % "org.macroid" %% "macroid"
+//proguardCache in Android += ProguardCache("org.macroid") % "org.macroid" %% "macroid"
 
 proguardOptions in Android += "-ignorewarnings"

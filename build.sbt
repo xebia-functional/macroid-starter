@@ -14,11 +14,15 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.macroid" %% "macroid" % "1.0.0-20130929",
+  "io.dylemma" %% "scala-frp" % "1.0",
   "com.android.support" % "support-v13" % "13.0.0"
 )
 
 proguardScala in Android := true
 
-//proguardCache in Android += ProguardCache("org.macroid") % "org.macroid" %% "macroid"
+proguardCache in Android += ProguardCache("scalaz") % "org.scalaz"
 
-proguardOptions in Android += "-ignorewarnings"
+proguardOptions in Android ++= Seq(
+    "-ignorewarnings",
+    "-keep class scala.Dynamic"
+)

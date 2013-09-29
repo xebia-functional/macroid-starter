@@ -8,9 +8,7 @@ import org.macroid.contrib.Layouts.VerticalLinearLayout
 import org.macroid.contrib.ExtraTweaks
 import android.content.Context
 import android.view.ViewGroup.LayoutParams._
-import scala.concurrent.future
 import scala.concurrent.ExecutionContext.Implicits.global
-import org.macroid.util.Functors._
 
 // define our helpers in a mixable trait
 trait Styles extends LayoutDsl with ExtraTweaks {
@@ -23,12 +21,12 @@ trait Styles extends LayoutDsl with ExtraTweaks {
 
 class MainActivity extends FragmentActivity with FullDslActivity with Styles {
   // prepare a variable to hold our text view
-  var cap: TextView = _
+  var cap = slot[TextView]
 
   override def onCreate(savedInstanceState: Bundle) {
     super.onCreate(savedInstanceState)
     // this will be a vertical LinearLayout
-    setContentView(l[VerticalLinearLayout](
+    val view = l[VerticalLinearLayout](
       // a text view
       w[TextView] ~>
         // use our helper
@@ -44,9 +42,11 @@ class MainActivity extends FragmentActivity with FullDslActivity with Styles {
         layoutParams(MATCH_PARENT, WRAP_CONTENT) ~>
         // set click handler
         On.click {
-          // with ~> we can not only apply tweaks, but also apply tweaks, that will happen in the future
-          cap ~> text("Button clicked!") ~> future { Thread.sleep(1000); text("Howdy") }
+          // with ~@> we can apply snails like `delay`
+          // tweaks coming after them will wait till they finish
+          cap ~> text("Button clicked!") ~@> delay(1000) ~> text("Howdy")
         }
-    ))
+    )
+    setContentView(view)
   }
 }

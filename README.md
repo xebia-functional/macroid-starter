@@ -14,7 +14,7 @@ If you want to use *INTELLIJ IDEA* to work with the project:
 * Install Scala plugin from http://plugins.jetbrains.com/plugin/1347
 * Install sbt plugin from http://plugins.jetbrains.com/plugin/5007 (For Android Studio 0.1, version 1.5.0 works well; for AS 0.2, use terminal)
 * `sbt gen-idea` will generate project files for you. When you open the project, IDEA will suggest to add Android facet — go for it.
-* Inside IDEA run the sbt console (or terminal) and type `android:run` there. You can also use `compile` and other normal sbt stuff.
+* Inside IDEA run the sbt console (or open terminal and type `sbt`) and type `android:run` there. You can also use `compile` and other normal sbt stuff.
 * Each time you update the dependencies, run `sbt gen-idea` again.
 
 Important:

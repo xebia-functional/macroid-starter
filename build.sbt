@@ -2,7 +2,7 @@ import android.Keys._
 
 android.Plugin.androidBuild
 
-platformTarget in Android := "android-17"
+platformTarget in Android := "android-18"
 
 name := "macroid-starter"
 
@@ -13,9 +13,9 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.macroid" %% "macroid" % "1.0.0",
+  "org.macroid" %% "macroid" % "1.0.1",
   "io.dylemma" %% "scala-frp" % "1.0",
-  "com.android.support" % "support-v13" % "13.0.0"
+  "com.android.support" % "support-v13" % "18.0.0"
 )
 
 proguardScala in Android := true

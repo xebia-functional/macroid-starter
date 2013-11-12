@@ -13,8 +13,7 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.macroid" %% "macroid" % "1.1.0-RC2",
-  "io.dylemma" %% "scala-frp" % "1.0",
+  "org.macroid" %% "macroid" % "1.1.0-20131112",
   "com.android.support" % "support-v13" % "18.0.0"
 )
 

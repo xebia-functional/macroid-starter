@@ -6,20 +6,26 @@ platformTarget in Android := "android-18"
 
 name := "macroid-starter"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.10.4"
 
 resolvers ++= Seq(
-  "jrebel" at "http://jcenter.bintray.com"
+  Resolver.sonatypeRepo("releases"),
+  "jcenter" at "http://jcenter.bintray.com"
+)
+
+scalacOptions in (Compile, compile) ++= Seq(
+  "-P:wartremover:cp:" + (dependencyClasspath in Compile).value
+    .files.map(_.toURL.toString)
+    .find(_.contains("org.macroid/macroid_")).get,
+  "-P:wartremover:traverser:macroid.warts.CheckUi"
 )
 
 libraryDependencies ++= Seq(
-  "org.macroid" %% "macroid" % "1.1.0-20131112",
-  "com.android.support" % "support-v13" % "18.0.0"
+  "org.macroid" %% "macroid" % "2.0.0-M1",
+  compilerPlugin("org.brianmckenna" %% "wartremover" % "0.10")
 )
 
 proguardScala in Android := true
-
-proguardCache in Android += ProguardCache("scalaz") % "org.scalaz"
 
 proguardOptions in Android ++= Seq(
   "-ignorewarnings",

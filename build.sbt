@@ -6,7 +6,9 @@ platformTarget in Android := "android-18"
 
 name := "macroid-starter"
 
-scalaVersion := "2.10.4"
+scalaVersion := "2.11.1"
+
+run <<= run in Android
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("releases"),
@@ -21,7 +23,7 @@ scalacOptions in (Compile, compile) ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.macroid" %% "macroid" % "2.0.0-M1",
+  "org.macroid" %% "macroid" % "2.0.0-M2",
   compilerPlugin("org.brianmckenna" %% "wartremover" % "0.10")
 )
 

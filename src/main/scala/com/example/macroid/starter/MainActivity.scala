@@ -8,6 +8,7 @@ import android.app.Activity
 
 // import macroid stuff
 import macroid._
+import macroid.util.Ui
 import macroid.FullDsl._
 import macroid.contrib.ExtraTweaks._
 
@@ -17,10 +18,10 @@ import scala.concurrent.ExecutionContext.Implicits.global
 trait Styles {
   // sets text, large font size and a long click handler
   def caption(cap: String)(implicit ctx: AppContext): Tweak[TextView] =
-    text(cap) + TextSize.large + On.longClick(for {
-      // create and show a toast
-      _ ← toast("I’m a caption") <~ gravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL) <~ fry
-    } yield true)
+    text(cap) + TextSize.large + On.longClick {
+      (toast("I’m a caption") <~ gravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL) <~ fry) ~
+      Ui(true)
+    }
 }
 
 // mix in Contexts for Activity
@@ -47,14 +48,13 @@ class MainActivity extends Activity with Styles with Contexts[Activity] {
         layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
         // set click handler
         On.click {
-          // with <@~ we can apply snails like `delay`
+          // with <~~ we can apply snails like `delay`
           // tweaks coming after them will wait till they finish
-          cap <~ text("Button clicked!") <@~ delay(1000) <~ text("Howdy")
+          cap <~ text("Button clicked!") <~~ delay(1000) <~ text("Howdy")
         }
     ) <~
       // match layout orientation to screen orientation
-      (portrait ? vertical | horizontal) <~~ Transformer {
-        // ~~> applies the transformer to all children, grand-children, ...
+      (portrait ? vertical | horizontal) <~ Transformer {
         // here we set a padding of 4 dp for all inner views
         case x: View ⇒ x <~ padding(all = 4 dp)
       }

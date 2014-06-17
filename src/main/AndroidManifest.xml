@@ -4,13 +4,12 @@
     android:versionName="0.1">
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="9"
         android:targetSdkVersion="16"/>
 
     <application
         android:label="Macroid Starter"
-        android:icon="@drawable/android:star_big_on"
-        android:theme="@android:style/Theme.Holo.Light">
+        android:icon="@drawable/android:star_big_on">
 
         <activity
           android:label="Macroid Starter"

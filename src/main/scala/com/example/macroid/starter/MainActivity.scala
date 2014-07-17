@@ -8,9 +8,8 @@ import android.app.Activity
 
 // import macroid stuff
 import macroid._
-import macroid.util.Ui
 import macroid.FullDsl._
-import macroid.contrib.ExtraTweaks._
+import macroid.contrib._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -18,7 +17,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 trait Styles {
   // sets text, large font size and a long click handler
   def caption(cap: String)(implicit ctx: AppContext): Tweak[TextView] =
-    text(cap) + TextSize.large + On.longClick {
+    text(cap) + TextTweaks.large + On.longClick {
       (toast("I’m a caption") <~ gravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL) <~ fry) ~
       Ui(true)
     }

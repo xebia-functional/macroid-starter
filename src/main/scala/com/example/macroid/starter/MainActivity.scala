@@ -10,7 +10,6 @@ import android.app.Activity
 import macroid._
 import macroid.FullDsl._
 import macroid.contrib._
-
 import scala.concurrent.ExecutionContext.Implicits.global
 
 // define our helpers in a mixable trait
@@ -51,6 +50,8 @@ class MainActivity extends Activity with Styles with Contexts[Activity] {
           // tweaks coming after them will wait till they finish
           cap <~ text("Button clicked!") <~~ delay(1000) <~ text("Howdy")
         }
+        //Rounded edge button using background image
+        <~ BgTweaks.res(R.drawable.glossy)
     ) <~
       // match layout orientation to screen orientation
       (portrait ? vertical | horizontal) <~ Transformer {

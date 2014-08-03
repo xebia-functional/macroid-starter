@@ -45,6 +45,8 @@ class MainActivity extends Activity with Styles with Contexts[Activity] {
         text("Click me!") <~
         // set layout params (LinearLayout.LayoutParams will be used)
         layoutParams[LinearLayout](MATCH_PARENT, WRAP_CONTENT) <~
+        // specify a background image
+        BgTweaks.res(R.drawable.btn_green_matte) <~
         // set click handler
         On.click {
           // with <~~ we can apply snails like `delay`

@@ -3,11 +3,11 @@ import android.Dependencies.{LibraryDependency, aar}
 
 android.Plugin.androidBuild
 
-platformTarget in Android := "android-19"
+platformTarget in Android := "android-21"
 
 name := "macroid-starter"
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.6"
 
 run <<= run in Android
 
@@ -23,10 +23,12 @@ scalacOptions in (Compile, compile) ++= Seq(
   "-P:wartremover:traverser:macroid.warts.CheckUi"
 )
 
+javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
+scalacOptions ++= Seq("-feature", "-deprecation", "-target:jvm-1.7")
+
 libraryDependencies ++= Seq(
-  aar("org.macroid" %% "macroid" % "2.0.0-M3"),
-  aar("com.google.android.gms" % "play-services" % "4.0.30"),
-  aar("com.android.support" % "support-v4" % "20.0.0"),
+  aar("org.macroid" %% "macroid" % "2.0.0-M4"),
+  aar("com.android.support" % "support-v4" % "21.0.3"),
   compilerPlugin("org.brianmckenna" %% "wartremover" % "0.10")
 )
 

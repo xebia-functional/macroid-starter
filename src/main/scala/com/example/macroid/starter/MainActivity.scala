@@ -1,5 +1,7 @@
 package com.example.macroid.starter
 
+import scala.language.postfixOps
+
 import android.os.Bundle
 import android.widget.{LinearLayout, TextView, Button}
 import android.view.ViewGroup.LayoutParams._

@@ -28,6 +28,7 @@ scalacOptions ++= Seq("-feature", "-deprecation", "-target:jvm-1.7")
 
 libraryDependencies ++= Seq(
   aar("org.macroid" %% "macroid" % "2.0.0-M4"),
+  aar("org.macroid" %% "macroid-viewable" % "2.0.0-M4"),
   aar("com.android.support" % "support-v4" % "21.0.3"),
   compilerPlugin("org.brianmckenna" %% "wartremover" % "0.10")
 )

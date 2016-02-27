@@ -3,11 +3,11 @@ import android.Dependencies.{LibraryDependency, aar}
 
 android.Plugin.androidBuild
 
-platformTarget in Android := "android-21"
+platformTarget in Android := "android-23"
 
 name := "macroid-starter"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
 run <<= run in Android
 
@@ -29,7 +29,7 @@ scalacOptions ++= Seq("-feature", "-deprecation", "-target:jvm-1.7")
 libraryDependencies ++= Seq(
   aar("org.macroid" %% "macroid" % "2.0.0-M4"),
   aar("org.macroid" %% "macroid-viewable" % "2.0.0-M4"),
-  aar("com.android.support" % "support-v4" % "21.0.3"),
+  aar("com.android.support" % "support-v4" % "23.2.0"),
   compilerPlugin("org.brianmckenna" %% "wartremover" % "0.10")
 )
 

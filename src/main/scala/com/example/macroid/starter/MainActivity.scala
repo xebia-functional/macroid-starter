@@ -23,14 +23,14 @@ case class ColorString(text: String, color: Int)
 // define our helpers in a mixable trait
 trait Styles {
   // sets text, large font size and a long click handler
-  def caption(cap: String)(implicit appCtx: AppContext): Tweak[TextView] =
+  def caption(cap: String)(implicit ctx: ContextWrapper): Tweak[TextView] =
     text(cap) + TextTweaks.large + On.longClick {
       (toast("I’m a caption") <~ gravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL) <~ fry) ~
       Ui(true)
     }
 
   // allows to display colored strings in a ListView
-  def colorStringListable(implicit ctx: ActivityContext, appCtx: AppContext): Listable[ColorString, TextView] =
+  def colorStringListable(implicit ctx: ContextWrapper): Listable[ColorString, TextView] =
     Listable[ColorString].tw(
       w[TextView] <~ TextTweaks.typeface("sans-serif-condensed") <~ TextTweaks.medium
     ) { colorString ⇒
@@ -87,6 +87,6 @@ class MainActivity extends Activity with Styles with Contexts[Activity] {
         case x: View ⇒ x <~ padding(all = 4 dp)
       }
 
-    setContentView(getUi(view))
+    setContentView(view.get)
   }
 }

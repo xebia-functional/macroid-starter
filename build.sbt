@@ -7,7 +7,7 @@ platformTarget in Android := "android-23"
 
 name := "macroid-starter"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 run <<= run in Android
 
@@ -16,21 +16,13 @@ resolvers ++= Seq(
   "jcenter" at "http://jcenter.bintray.com"
 )
 
-scalacOptions in (Compile, compile) ++=
-  (dependencyClasspath in Compile).value.files.map("-P:wartremover:cp:" + _.toURI.toURL)
-
-scalacOptions in (Compile, compile) ++= Seq(
-  "-P:wartremover:traverser:macroid.warts.CheckUi"
-)
-
 javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
 scalacOptions ++= Seq("-feature", "-deprecation", "-target:jvm-1.7")
 
 libraryDependencies ++= Seq(
-  aar("org.macroid" %% "macroid" % "2.0.0-M4"),
-  aar("org.macroid" %% "macroid-viewable" % "2.0.0-M4"),
-  aar("com.android.support" % "support-v4" % "23.2.0"),
-  compilerPlugin("org.brianmckenna" %% "wartremover" % "0.10")
+  aar("org.macroid" %% "macroid" % "2.0.0-M5"),
+  aar("org.macroid" %% "macroid-viewable" % "2.0.0-M5"),
+  aar("com.android.support" % "support-v4" % "24.0.0")
 )
 
 proguardScala in Android := true
